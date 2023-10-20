@@ -1,5 +1,9 @@
 import styled from "styled-components/native";
 
+interface TextTaskProps {
+  success: boolean;
+}
+
 export const ContainerTask = styled.View`
   flex-direction: row;
   align-items: center;
@@ -20,9 +24,9 @@ export const CheckTask = styled.View`
   border-color: #4ea8de;
 `;
 
-export const TextTask = styled.Text`
+export const TextTask = styled.Text<TextTaskProps>`
+  text-decoration: ${(props) => (props.success ? "line-through" : "none")};
+  color: ${(props) => (props.success ? "#808080" : "#fff")};
+  text-decoration-color: #808080;
   font-size: 14px;
-  color: #fff;
 `;
-
-export const ContentTask = styled.View``;

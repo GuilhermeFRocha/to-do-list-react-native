@@ -24,16 +24,23 @@ export const Home = () => {
   const [tasks, setTasks] = useState<string[]>([]);
   const [taskName, setTaskName] = useState("");
 
+  const [tasksCheck, setTasksCheck] = useState<string[]>([]);
+
   function handleTaskAdd() {
-    if (tasks.includes(taskName) || taskName === "") {
-      return Alert.alert("Task já existe", `Preencha o campo`);
+    if (tasks.includes(taskName)) {
+      return Alert.alert("Task já existe", `Crie uma nova tarefa`);
+    } else if (taskName === "") {
+      return Alert.alert("Campo vazio", `Preencha o campo`);
     }
     setTasks([...tasks, taskName]);
     setTaskName("");
   }
 
-  function handleTaskRemove(item: any) {
-    console.log("oi");
+  function handleTaskRemove(item: string) {
+    const tasksAll = tasks.filter((task) => {
+      return task !== item;
+    });
+    setTasks(tasksAll);
   }
   return (
     <>
@@ -49,7 +56,7 @@ export const Home = () => {
         <InputText
           placeholder="Adicionar uma nova tarefa"
           placeholderTextColor="#808080"
-          onChangeText={(e: any) => setTaskName(e)}
+          onChangeText={(e) => setTaskName(e)}
           value={taskName}
         />
 
@@ -66,13 +73,13 @@ export const Home = () => {
             <CreatedTask>
               <Text style={{ color: "#4ea8de" }}>Criadas</Text>
               <NumberTask>
-                <Text style={{ color: "#d9d9d9" }}>0</Text>
+                <Text style={{ color: "#d9d9d9" }}>{tasks.length}</Text>
               </NumberTask>
             </CreatedTask>
             <CompletedTask>
               <Text style={{ color: "#8284FA" }}>Concluídas</Text>
               <NumberTask>
-                <Text style={{ color: "#d9d9d9" }}>0</Text>
+                <Text style={{ color: "#d9d9d9" }}>{tasksCheck.length}</Text>
               </NumberTask>
             </CompletedTask>
           </HeadTask>
@@ -85,6 +92,8 @@ export const Home = () => {
                   key={item}
                   name={item}
                   onRemove={() => handleTaskRemove(item)}
+                  setTasksCheck={setTasksCheck}
+                  tasksCheck={tasksCheck}
                 />
               )}
               showsVerticalScrollIndicator={false}
@@ -92,12 +101,18 @@ export const Home = () => {
                 <WithoutTask>
                   <Image source={ClipImg} />
 
-                  <Text style={{ textAlign: "center" }}>
+                  <Text
+                    style={{
+                      textAlign: "center",
+                      paddingTop: 10,
+                      color: "#808080",
+                    }}
+                  >
                     Você ainda não tem tarefas cadastradas.
                   </Text>
 
-                  <Text style={{ textAlign: "center" }}>
-                    Crie tarefas e organize seus itens a fazers itens a fazer
+                  <Text style={{ textAlign: "center", color: "#808080" }}>
+                    Crie tarefas e organize seus itens a fazers itens a fazer.
                   </Text>
                 </WithoutTask>
               )}

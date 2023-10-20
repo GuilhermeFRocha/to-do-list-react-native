@@ -1,18 +1,33 @@
 import React, { useState } from "react";
 import { TouchableOpacity } from "react-native";
-import { View } from "react-native";
-import { Text } from "react-native";
 import { CheckTask, ContainerTask, TextTask } from "./styles";
 import { Image } from "react-native";
 import trash from "../../../assets/trash.png";
-import check from "../../../assets/check.png";
 import Icon from "react-native-vector-icons/AntDesign";
 
-export const Tasks = ({ name, key, onRemove }: any) => {
+interface TasksProps {
+  name: string;
+  onRemove: () => void;
+  setTasksCheck: (tasks: string[]) => void;
+  tasksCheck: string[];
+}
+
+export const Tasks = ({
+  name,
+  onRemove,
+  setTasksCheck,
+  tasksCheck,
+}: TasksProps) => {
   const [success, setSuccess] = useState<boolean>(false);
 
   function handleTaskConcluided() {
-    setSuccess(!success);
+    if (tasksCheck.includes(name)) {
+      setTasksCheck(tasksCheck.filter((taskName: string) => taskName !== name));
+      setSuccess(false);
+    } else {
+      setTasksCheck([...tasksCheck, name]);
+      setSuccess(true);
+    }
   }
   return (
     <ContainerTask>
@@ -23,8 +38,17 @@ export const Tasks = ({ name, key, onRemove }: any) => {
           <Icon name="checkcircleo" size={24} color="#5E60CE" />
         )}
       </TouchableOpacity>
-      <TextTask>{name}</TextTask>
-      <TouchableOpacity onPress={onRemove}>
+      <TextTask success={success}>
+        {name.length > 20 ? name.slice(0, 20) + "..." : name}
+      </TextTask>
+      <TouchableOpacity
+        onPress={() => {
+          onRemove();
+          setTasksCheck(
+            tasksCheck.filter((taskName: string) => taskName !== name)
+          );
+        }}
+      >
         <Image source={trash} />
       </TouchableOpacity>
     </ContainerTask>
