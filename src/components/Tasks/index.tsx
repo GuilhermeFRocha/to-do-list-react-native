@@ -38,7 +38,12 @@ export const Tasks = ({
           <Icon name="checkcircleo" size={24} color="#5E60CE" />
         )}
       </TouchableOpacity>
-      <TextTask success={success}>
+      <TextTask
+        style={{
+          color: success ? "#808080" : "#fff",
+          textDecorationLine: success ? "line-through" : "none",
+        }}
+      >
         {name.length > 20 ? name.slice(0, 20) + "..." : name}
       </TextTask>
       <TouchableOpacity

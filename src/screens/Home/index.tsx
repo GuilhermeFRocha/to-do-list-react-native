@@ -19,6 +19,7 @@ import ClipImg from "../../../assets/clipboard.png";
 import Icon from "react-native-vector-icons/EvilIcons";
 import { Tasks } from "../../components/Tasks";
 import { useState } from "react";
+import { colors } from "../../styles/colors";
 
 export const Home = () => {
   const [tasks, setTasks] = useState<string[]>([]);
@@ -48,14 +49,14 @@ export const Home = () => {
         <Image source={icon} />
         <StyledText>
           to
-          <Text style={{ color: "#5E60CE" }}>do</Text>
+          <Text style={{ color: colors.purple_200 }}>do</Text>
         </StyledText>
       </StyledView>
 
       <ViewInput>
         <InputText
           placeholder="Adicionar uma nova tarefa"
-          placeholderTextColor="#808080"
+          placeholderTextColor={colors.gray_300}
           onChangeText={(e) => setTaskName(e)}
           value={taskName}
         />
@@ -71,15 +72,17 @@ export const Home = () => {
         <ViewList>
           <HeadTask>
             <CreatedTask>
-              <Text style={{ color: "#4ea8de" }}>Criadas</Text>
+              <Text style={{ color: colors.blue_100 }}>Criadas</Text>
               <NumberTask>
-                <Text style={{ color: "#d9d9d9" }}>{tasks.length}</Text>
+                <Text style={{ color: colors.gray_200 }}>{tasks.length}</Text>
               </NumberTask>
             </CreatedTask>
             <CompletedTask>
-              <Text style={{ color: "#8284FA" }}>Concluídas</Text>
+              <Text style={{ color: colors.purple_100 }}>Concluídas</Text>
               <NumberTask>
-                <Text style={{ color: "#d9d9d9" }}>{tasksCheck.length}</Text>
+                <Text style={{ color: colors.gray_200 }}>
+                  {tasksCheck.length}
+                </Text>
               </NumberTask>
             </CompletedTask>
           </HeadTask>
@@ -105,14 +108,14 @@ export const Home = () => {
                     style={{
                       textAlign: "center",
                       paddingTop: 10,
-                      color: "#808080",
+                      color: colors.gray_300,
                     }}
                   >
                     Você ainda não tem tarefas cadastradas.
                   </Text>
 
-                  <Text style={{ textAlign: "center", color: "#808080" }}>
-                    Crie tarefas e organize seus itens a fazers itens a fazer.
+                  <Text style={{ textAlign: "center", color: colors.gray_300 }}>
+                    Crie tarefas e organize seus itens a fazer.
                   </Text>
                 </WithoutTask>
               )}

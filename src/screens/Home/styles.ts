@@ -1,8 +1,9 @@
 import styled from "styled-components/native";
 import { TextInput } from "react-native";
+import { colors } from "../../styles/colors";
 
 export const StyledView = styled.View`
-  background-color: #000;
+  background-color: ${colors.black_100};
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -11,24 +12,24 @@ export const StyledView = styled.View`
 `;
 
 export const InputText = styled(TextInput)`
-  background: #262626;
+  background: ${colors.gray_500};
   padding: 16px;
   font-size: 16px;
   border-radius: 6px;
-  border: 2px solid black;
+  border: 2px solid ${colors.black_100};
   width: 224px;
-  color: #808080;
+  color: ${colors.gray_300};
 `;
 
 export const IconPlus = styled.View`
-  background: #1e6f9f;
+  background: ${colors.blue_200};
   padding: 14px;
   border-radius: 6px;
 `;
 
 export const StyledText = styled.Text`
   font-size: 30px;
-  color: #4ea8de;
+  color: ${colors.blue_100};
   font-weight: 800;
 `;
 export const ViewInput = styled.View`
@@ -44,7 +45,7 @@ export const ViewInput = styled.View`
 `;
 
 export const ViewMain = styled.View`
-  background-color: #191919;
+  background-color: ${colors.gray_600};
   height: 100%;
 `;
 
@@ -74,7 +75,7 @@ export const CompletedTask = styled.View`
 
 export const NumberTask = styled.View`
   padding: 2px 8px;
-  background-color: #333333;
+  background-color: ${colors.gray_400};
   border-radius: 20px;
   border: none;
 `;
@@ -83,7 +84,7 @@ export const MainTask = styled.View`
   margin-top: 20px;
   width: 100%;
   border-top-width: 2px;
-  border-color: #2f2f2f;
+  border-color: ${colors.gray_100};
   padding-top: 48px;
 `;
 

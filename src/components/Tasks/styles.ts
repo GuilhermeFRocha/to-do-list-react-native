@@ -1,17 +1,14 @@
 import styled from "styled-components/native";
-
-interface TextTaskProps {
-  success: boolean;
-}
+import { colors } from "../../styles/colors";
 
 export const ContainerTask = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: #262626;
+  background-color: ${colors.gray_500};
   padding: 12px;
   border: 1px;
-  border-color: #333333;
+  border-color: ${colors.gray_400};
   border-radius: 8px;
   margin-bottom: 8px;
 `;
@@ -21,12 +18,10 @@ export const CheckTask = styled.View`
   height: 24px;
   border-width: 1px;
   border-radius: 20px;
-  border-color: #4ea8de;
+  border-color: ${colors.blue_100};
 `;
 
-export const TextTask = styled.Text<TextTaskProps>`
-  text-decoration: ${(props) => (props.success ? "line-through" : "none")};
-  color: ${(props) => (props.success ? "#808080" : "#fff")};
-  text-decoration-color: #808080;
+export const TextTask = styled.Text`
+  text-decoration-color: ${colors.gray_300};
   font-size: 14px;
 `;
