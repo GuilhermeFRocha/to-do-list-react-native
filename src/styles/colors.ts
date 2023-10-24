@@ -8,6 +8,6 @@ export const colors = {
   gray_400: "#333333",
   gray_500: "#262626",
   gray_600: "#191919",
-  purple_100: "8284fa",
-  purple_200: "5E60CE",
+  purple_100: "#8284fa",
+  purple_200: "#5E60CE",
 };

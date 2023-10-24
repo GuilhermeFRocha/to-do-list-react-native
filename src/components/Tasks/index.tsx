@@ -1,9 +1,9 @@
-import React, { useState } from "react";
 import { TouchableOpacity } from "react-native";
-import { CheckTask, ContainerTask, TextTask } from "./styles";
 import { Image } from "react-native";
-import trash from "../../../assets/trash.png";
+import React, { useState } from "react";
 import Icon from "react-native-vector-icons/AntDesign";
+import { CheckTask, ContainerTask, TextTask } from "./styles";
+import trash from "../../../assets/trash.png";
 
 interface TasksProps {
   name: string;

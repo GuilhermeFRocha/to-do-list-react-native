@@ -1,4 +1,7 @@
 import { Image, Text, TouchableOpacity, FlatList, Alert } from "react-native";
+import { useState } from "react";
+import Icon from "react-native-vector-icons/EvilIcons";
+import { Tasks } from "../../components/Tasks";
 import {
   CompletedTask,
   CreatedTask,
@@ -14,12 +17,9 @@ import {
   ViewMain,
   WithoutTask,
 } from "./styles";
+import { colors } from "../../styles/colors";
 import icon from "../../../assets/favicon.png";
 import ClipImg from "../../../assets/clipboard.png";
-import Icon from "react-native-vector-icons/EvilIcons";
-import { Tasks } from "../../components/Tasks";
-import { useState } from "react";
-import { colors } from "../../styles/colors";
 
 export const Home = () => {
   const [tasks, setTasks] = useState<string[]>([]);

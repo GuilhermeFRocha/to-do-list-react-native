@@ -14,7 +14,7 @@ export const StyledView = styled.View`
 export const InputText = styled(TextInput)`
   background: ${colors.gray_500};
   padding: 16px;
-  font-size: 16px;
+  font-size: 15px;
   border-radius: 6px;
   border: 2px solid ${colors.black_100};
   width: 224px;
